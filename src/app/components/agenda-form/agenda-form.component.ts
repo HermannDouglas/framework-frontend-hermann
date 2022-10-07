@@ -14,7 +14,6 @@ import { IForm } from '../i-form';
 })
 export class AgendaFormComponent implements OnInit, IForm<Atendimento> {
 
-
   constructor() { }
 
   registro: Atendimento = <Atendimento>{};

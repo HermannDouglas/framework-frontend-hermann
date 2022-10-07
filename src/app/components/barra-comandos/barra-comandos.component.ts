@@ -10,7 +10,7 @@ export class BarraComandosComponent implements OnInit {
 
   constructor() { }
 
-  busca(termoBusca: String) {
+  busca(termoBusca: string) {
     console.log(termoBusca);
   }
 
