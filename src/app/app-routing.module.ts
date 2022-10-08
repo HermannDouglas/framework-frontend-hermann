@@ -4,11 +4,10 @@ import { AgendaFormComponent } from './components/agenda-form/agenda-form.compon
 import { AgendaListComponent } from './components/agenda-list/agenda-list.component';
 import { AtendimentoListComponent } from './components/atendimento-list/atendimento-list.component';
 
-
 const routes: Routes = [
   { path: 'agenda', component: AgendaListComponent },
   { path: 'agenda/form', component: AgendaFormComponent },
-  { path: 'atendimento', component: AtendimentoListComponent }
+  { path: 'atendimento', component: AtendimentoListComponent}
 ];
 
 @NgModule({

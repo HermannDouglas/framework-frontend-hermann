@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Atendimento } from 'src/app/model/atendimento';
+import { AtendimentoService } from 'src/app/service/atendimento.service';
 import { IList } from '../i-list';
 
 @Component({
@@ -10,7 +11,9 @@ import { IList } from '../i-list';
 })
 export class AtendimentoListComponent implements OnInit, IList<Atendimento> {
 
-  constructor() { }
+  constructor(
+    private servico: AtendimentoService
+  ) { }
 
   registros: Atendimento[] = Array<Atendimento>();
 
