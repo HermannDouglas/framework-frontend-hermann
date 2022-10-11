@@ -62,7 +62,7 @@ export class AgendaFormComponent implements OnInit, IForm<Atendimento> {
         next: (resposta: Atendimento) => {
           this.registro = resposta;
         }
-      });
+      })
     }
   }
 
