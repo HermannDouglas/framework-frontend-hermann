@@ -16,7 +16,7 @@ export class AtendimentoListComponent implements OnInit, IList<Atendimento> {
   ) { }
 
   registros: Atendimento[] = Array<Atendimento>();
-  status: string[] = ['CHEGADA', 'ATENDImento'];
+  status: string[] = ['CHEGADA', 'ATENDIMENTO'];
 
   get(termoBusca?: string | undefined): void {
     this.servico.getByStatus(this.status, termoBusca).subscribe({

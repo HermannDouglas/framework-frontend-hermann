@@ -37,6 +37,7 @@ export class AgendaFormComponent implements OnInit, IForm<Atendimento> {
   }
 
   ngOnInit(): void {
+
     this.servicoConvenio.get().subscribe({
       next: (resposta: Convenio[]) => {
         this.convenios = resposta;
@@ -55,7 +56,7 @@ export class AgendaFormComponent implements OnInit, IForm<Atendimento> {
       }
     });
 
-    const id = this.route.snapshot.queryParamMap.get('id');
+    const id = this.route.snapshot.queryParamMap.get("id");
     if (id) {
       this.servico.getById(+id).subscribe({
         next: (resposta: Atendimento) => {

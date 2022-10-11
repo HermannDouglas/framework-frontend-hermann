@@ -29,12 +29,14 @@ export class AtendimentoService implements ICrudService<Atendimento> {
     return this.http.get<Atendimento>(url);
   }
 
-  getByStatus(status: string[], termoBusca?: string): Observable<Atendimento[]> {
+  getByStatus(
+      status: string[],
+      termoBusca?: string): Observable<Atendimento[]> {
     let url = this.apiUrl;
     if (termoBusca) {
       url += 'busca/' + termoBusca + '/status/' + status;
     } else {
-      url += 'busca/status' + status;
+      url += 'busca/status/' + status;
     }
     return this.http.get<Atendimento[]>(url);
   }
