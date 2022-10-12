@@ -7,6 +7,7 @@
         <select
                 name="profissional"
                 [(ngModel)]="registro.profissional"
+                [compareWith]="compareById"
                 required>
             <option value="">Selecione</option>
             <option
@@ -47,7 +48,8 @@
         <label for="convenio">Convênio</label>
         <select
                 name="convenio"
-                [(ngModel)]="registro.convenio">
+                [(ngModel)]="registro.convenio"
+                [compareWith]="compareById">
             <option value="">Selecione</option>
             <option
                     *ngFor="let item of convenios"
@@ -59,6 +61,7 @@
         <label for="paciente">Paciente</label>
         <select name="paciente"
                 [(ngModel)]="registro.paciente"
+                [compareWith]="compareById"
                 required>
             <option value="">Selecione</option>
             <option
