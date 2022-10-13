@@ -10,11 +10,11 @@ export class AlertaService {
 
   private controleAlerta: Subject<Alerta>;
 
-  constructor() { 
+  constructor() {
     this.controleAlerta = new Subject<Alerta>();
   }
 
-  enviarAlerta(alerta:Alerta):void {
+  enviarAlerta(alerta: Alerta): void {
     this.controleAlerta.next(alerta);
   }
 
@@ -22,7 +22,7 @@ export class AlertaService {
     this.controleAlerta.next({
       tipo: ETipoAlerta.SUCESSO,
       mensagem: 'Operação realizada com sucesso!'
-    });
+    })
   }
 
   receberAlerta(): Observable<Alerta> {

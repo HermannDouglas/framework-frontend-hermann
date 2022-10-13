@@ -7,26 +7,26 @@ import { AlertaService } from 'src/app/service/alerta.service';
 @Component({
   selector: 'app-alerta',
   templateUrl: './alerta.component.html',
-  styleUrls: [    
+  styleUrls: [
   ]
 })
 export class AlertaComponent implements OnInit {
 
   constructor(
     private servico: AlertaService,
-    private router: Router,
+    private router: Router
   ) { }
 
   exibeAlerta(alerta: Alerta): void {
     const elementoAlerta = document.querySelector<HTMLElement>('div.alerta');
     const elementoAlertaMensagem = document.querySelector<HTMLElement>('div.alerta span#mensagem');
-    if (elementoAlertaMensagem && elementoAlertaMensagem) {
+    if (elementoAlerta && elementoAlertaMensagem) {
       elementoAlertaMensagem.innerText = alerta.mensagem;
       elementoAlerta.classList.add(alerta.tipo);
       elementoAlerta.classList.remove('inativo');
     }
   }
-
+  
   fechaAlerta(): void {
     const elementoAlerta = document.querySelector<HTMLElement>('div.alerta');
     if (elementoAlerta) {
@@ -39,6 +39,7 @@ export class AlertaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.servico.receberAlerta().subscribe(
       (alerta) => {
         this.exibeAlerta(alerta);
@@ -52,6 +53,7 @@ export class AlertaComponent implements OnInit {
         }
       }
     );
+    
   }
 
 }
