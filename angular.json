@@ -1,8 +1,5 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "a563e62a-b520-48a2-81ef-8ddb31ccb6cf"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -107,5 +104,7 @@
       }
     }
   },
-  "defaultProject": "sgcmapp"
+  "cli": {
+    "analytics": false
+  }
 }
