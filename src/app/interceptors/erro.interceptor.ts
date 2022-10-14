@@ -10,12 +10,14 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { AlertaService } from '../service/alerta.service';
 import { EROFS } from 'constants';
 import { ETipoAlerta } from '../model/e-tipo-alerta';
+import { LoginService } from '../service/login.service';
 
 @Injectable()
 export class ErroInterceptor implements HttpInterceptor {
 
   constructor(
-    private servicoAlerta: AlertaService
+    private servicoAlerta: AlertaService,
+    private servicoLogin: LoginService,
   ) {}
 
   private readonly ERRO_HTTP: { [key: number]: string } = {
@@ -35,6 +37,12 @@ export class ErroInterceptor implements HttpInterceptor {
   processaErro(erro: HttpErrorResponse): Observable<any> {
 
     let mensagemErro = this.ERRO_HTTP[erro.status] || erro.error?.message || erro.statusText;
+
+    if (erro.status === 401) {
+      if (this.servicoLogin.isAutenticado()) {
+        this.servicoLogin.logout();
+      }
+    }
 
     this.servicoAlerta.enviarAlerta({
       tipo: ETipoAlerta.ERRO,
