@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'agenda', component: AgendaListComponent },
   { path: 'agenda/form', component: AgendaFormComponent },
   { path: 'atendimento', component: AtendimentoListComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({

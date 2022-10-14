@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { AlertaService } from '../service/alerta.service';
+import { EROFS } from 'constants';
 import { ETipoAlerta } from '../model/e-tipo-alerta';
 
 @Injectable()
@@ -20,7 +21,7 @@ export class ErroInterceptor implements HttpInterceptor {
   private readonly ERRO_HTTP: { [key: number]: string } = {
     401: "Acesso não autorizado: falha na autenticação.",
     403: "O acesso ao recurso foi negado.",
-    404: "Recurso não encontrado.",
+    404: "REcurso não encontrado.",
     500: "Erro interno do servidor.",
     0: "Erro desconhecido."
   }
@@ -32,7 +33,7 @@ export class ErroInterceptor implements HttpInterceptor {
   }
 
   processaErro(erro: HttpErrorResponse): Observable<any> {
-    
+
     let mensagemErro = this.ERRO_HTTP[erro.status] || erro.error?.message || erro.statusText;
 
     this.servicoAlerta.enviarAlerta({
@@ -41,5 +42,7 @@ export class ErroInterceptor implements HttpInterceptor {
     })
 
     return throwError(() => erro);
+
   }
+
 }

@@ -32,7 +32,7 @@ import { RequisicaoInterceptor } from './interceptors/requisicao.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErroInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: RequisicaoInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RequisicaoInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

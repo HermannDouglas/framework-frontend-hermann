@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -10,8 +10,8 @@ import { Usuario } from '../model/usuario';
 export class LoginService {
 
   constructor(
-    private http:HttpClient,
-    private router:Router
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   private autenticado: boolean = false;
@@ -25,17 +25,19 @@ export class LoginService {
     return this.usuario.papel == "ROLE_ADMIN";
   }
 
-  getUsuarios(): Usuario {
+  getUsuario(): Usuario {
     return this.usuario;
   }
 
   login(usuario: Usuario): void {
+
     this.usuario = usuario;
     const credenciaisCodificadas = btoa(usuario.nomeUsuario + ':' + usuario.senha);
-    const opcoesHttp = ({
-      'Authorization': 'Basic' + credenciaisCodificadas
-    });
-  }
+    const opcoesHttp = {
+      headers: new HttpHeaders({
+        'Authorization': 'Basic ' + credenciaisCodificadas
+      })
+    };
 
     const url = environment.API_URL + '/user_info/';
     this.http.get<Usuario>(url, opcoesHttp).subscribe({
@@ -45,12 +47,13 @@ export class LoginService {
           this.usuario = usuario;
           sessionStorage.setItem('usuario', JSON.stringify(usuario));
           this.router.navigate(['/']);
-        }  
+        }
       }
     });
   }
 
   logout(): void {
+
     const url = environment.API_URL + '/logout';
     this.http.get(url).subscribe({
       complete: () => {
@@ -60,19 +63,25 @@ export class LoginService {
         this.router.navigate(['/login']);
       }
     });
+
   }
 
   verificaLogin(): boolean {
 
     if (!this.isAutenticado()) {
-      this.usuario = JSON.parse(sessionStorage.getItem('usuario') || '{}');
+      this.usuario = JSON.parse(
+        sessionStorage.getItem('usuario') || '{}'
+      );
       if (Object.keys(this.usuario).length > 0) {
         this.autenticado = true;
       } else {
         this.router.navigate(['/login']);
       }
+      
     }
+
     return this.isAutenticado();
+
   }
 
 }
