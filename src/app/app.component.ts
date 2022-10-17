@@ -8,11 +8,12 @@ import { LoginService } from './service/login.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'sgcmapp';
 
   constructor(
     private servicoLogin: LoginService
-  ) { }
+  ) {}
 
   isAutenticado(): boolean {
     return this.servicoLogin.isAutenticado();
@@ -29,5 +30,5 @@ export class AppComponent {
   logout(): void {
     this.servicoLogin.logout();
   }
-
+  
 }

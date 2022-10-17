@@ -17,7 +17,7 @@ export class ErroInterceptor implements HttpInterceptor {
 
   constructor(
     private servicoAlerta: AlertaService,
-    private servicoLogin: LoginService,
+    private servicoLogin: LoginService
   ) {}
 
   private readonly ERRO_HTTP: { [key: number]: string } = {
@@ -43,7 +43,7 @@ export class ErroInterceptor implements HttpInterceptor {
         this.servicoLogin.logout();
       }
     }
-
+    
     this.servicoAlerta.enviarAlerta({
       tipo: ETipoAlerta.ERRO,
       mensagem: mensagemErro

@@ -12,9 +12,9 @@ const routes: Routes = [
     { path: 'agenda', component: AgendaListComponent },
     { path: 'agenda/form', component: AgendaFormComponent },
     { path: 'atendimento', component: AtendimentoListComponent},
-    { path: 'config', canActivate: [AutenticacaoGuard], data: {papel: 'ROLE_ADMIN'},children: [
+    { path: 'config', canActivate: [AutenticacaoGuard], data: {papel: 'ROLE_ADMIN'}, children: [
       { path: 'usuarios', component: UsuarioComponent }
-    ]}
+    ] }
   ]},
   { path: 'login', component: LoginComponent }
 ];

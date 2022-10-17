@@ -4,8 +4,10 @@
       <span id="titulo">SGCM</span>
   </div>
   <div id="usuarioInfo" [hidden]="!isAutenticado()">
-      <span>Usuário: {{getUsuario().nomeCompleto }} ({{ getUsuario().nomeUsuario }})</span>
-      <span>Papel: {{ getUsuario().papel }}</span>           
+      <span>
+            Usuário: {{ getUsuario().nomeCompleto }} ({{ getUsuario().nomeUsuario }})
+      </span>
+      <span>Papel: {{ getUsuario().papel }}</span>
       <select id="tema">
           <option value="">Escolha um tema</option>
           <option value="azul">Azul</option>
